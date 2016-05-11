@@ -1,0 +1,35 @@
+
+<div class="container index ng-cloak">
+  <div id="create-container" class="col-md-6 col-md-offset-3">
+    <div class="title col-xs-12">
+      <h1 class="col-xs-12">Create</h1>
+    </div>
+    <input type="text" placeholder="..title" ng-model="levelData.title" class="col-xs-12 input-title input-lg"/>
+    <div class="row">
+      <div class="words-list col-xs-6">
+        <ul class="list-good-words list-group">
+          <li ng-repeat="word in levelData.goodWords track by $index" ng-class="{'list-group-item-success':levelStatus.goodWords[$index].match}" class="list-group-item">
+            <input type="text" ng-model="levelData.goodWords[$index]" ng-change="testWords()" class="input-word"/>
+          </li>
+        </ul>
+      </div>
+      <div class="words-list col-xs-6">
+        <ul class="list-bad-words list-group">
+          <li ng-repeat="word in levelData.badWords track by $index" ng-class="{'list-group-item-danger':levelStatus.badWords[$index].match}" class="list-group-item">
+            <input type="text" ng-model="levelData.badWords[$index]" ng-change="testWords()" maxlength="30" class="input-word"/>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div ng-include="'/static/templates/views/regex-builder.html'" onload="updateRegexBuilder()" class="regex-builder"></div>
+    <div ng-show="isSolved" class="col-xs-12">
+      <div class="input-group created-group"><span class="input-group-btn">
+          <button id="btn-save" ng-click="save()" class="btn btn-success">Save</button></span>
+        <input id="created-url" readonly="readonly" type="text" ng-click="copyToClipboard()" class="form-control"/>
+      </div>
+      <div role="alert" style="display:none" class="alert-copy alert alert-dismissible alert-info fade in out text-center"><strong>Copied! &nbsp;&nbsp;</strong><span>Go to level&nbsp;<a ng-href="{{ createdUrl }}" class="alert-link">clicking here</a></span>
+        <button type="button" onclick="$('.alert-copy').hide()" aria-label="Close" class="close"><span aria-hidden="true">&times;</span></button>
+      </div>
+    </div>
+  </div>
+</div>

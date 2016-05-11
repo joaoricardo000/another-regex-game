@@ -1,0 +1,16 @@
+
+<div class="container search ng-cloak">
+  <div id="search-container" class="col-md-6 col-md-offset-3">
+    <div class="title col-xs-12">
+      <h1>Search</h1>
+      <div class="load-icon"><i ng-show="wordsList==null" class="fa fa-spin fa-refresh"></i></div>
+    </div>
+    <div ng-include="'/static/templates/views/regex-builder.html'" onload="updateRegexBuilder()" class="regex-builder row"></div>
+    <div ng-show="matches.length" class="words-list col-xs-12">
+      <h3>{{ totalMatches }}</h3>
+      <ul class="list-group list-good-words">
+        <li ng-repeat="match in matches" ng-bind-html="match.text" class="list-group-item"></li>
+      </ul>
+    </div>
+  </div>
+</div>

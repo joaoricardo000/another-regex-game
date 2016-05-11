@@ -1,0 +1,59 @@
+
+<div class="container index ng-cloak">
+  <div id="game-container" ng-show="levelData" class="col-md-6 col-md-offset-3">
+    <div class="col-xs-12 title"><i ng-click="showHint()" ng-show="gameMode == 'level'" class="fa fa-lightbulb-o icon-button hint-button"></i><i ng-click="solveLevel()" ng-show="gameMode == 'golf' || gameMode == 'created'" class="fa fa-bolt icon-button solve-button"></i><i ng-click="editLevel()" ng-show="gameMode == 'created'" class="fa fa-pencil icon-button edit-button"></i><i ng-click="getRandomLevel()" ng-show="gameMode == 'golf'" class="fa fa-forward icon-button random-button"></i>
+      <h1>{{ levelData.labels.title }}</h1>
+      <h3 class="title percentage">{{gameMode == 'level'?gameStatus.percentage+'%':golfPoints+' points'}}</h3>
+    </div>
+    <div class="row">
+      <div ng-class="{'col-xs-6':gameStatus.badWords.length, 'col-xs-12':gameStatus.badWords.length == 0}" class="words-list">
+        <ul class="list-group list-good-words">
+          <li ng-repeat="goodWord in gameStatus.goodWords track by $index" ng-bind-html="goodWord.text" ng-class="{'list-group-item-success':goodWord.match}" class="list-group-item"></li>
+        </ul>
+      </div>
+      <div class="col-xs-6 words-list">
+        <ul ng-show="gameStatus.badWords.length" class="list-group list-bad-words">
+          <li ng-repeat="badWord in gameStatus.badWords track by $index" ng-bind-html="badWord.text" ng-class="{'list-group-item-danger':badWord.match}" class="list-group-item"></li>
+        </ul>
+      </div>
+    </div>
+    <div ng-include="'/static/templates/views/regex-builder.html'" onload="updateRegexBuilder()" class="regex-builder"></div>
+    <div ng-show="isLevelCompleted" class="col-xs-12 text-center">
+      <button ng-click="nextLevel()" class="btn btn-lg btn-success btn-next-level">Next Level</button>
+    </div>
+  </div>
+</div>
+<f>
+  <div id="start-modal" onclick="$('#start-modal').modal('hide')" class="modal fade">
+    <div class="card">
+      <h2 class="card-title">{{levelData.modals.start.title}}</h2>
+      <p class="card-subtitle lead">{{levelData.modals.start.subtitle}}</p>
+      <p class="card-text">{{levelData.modals.start.text}}</p>
+      <p ng-repeat="txt in levelData.modals.start.texts" class="card-text">{{txt}}</p>
+    </div>
+  </div>
+  <div id="finish-modal" onclick="$('#finish-modal').modal('hide')" class="modal fade">
+    <div class="card">
+      <h2 class="card-title">{{levelData.modals.finish.title}}</h2>
+      <p class="card-subtitle lead">{{levelData.modals.finish.subtitle}}</p>
+      <p class="card-text">{{levelData.modals.finish.text}}</p>
+      <div class="text-center">
+        <button ng-click="nextLevel()" class="btn btn-lg btn-success btn-next-level">Next Level</button>
+      </div>
+    </div>
+  </div>
+  <div id="hints-modal" onclick="$('#hints-modal').modal('hide')" class="modal fade">
+    <div class="card">
+      <h2 class="card-title">{{levelData.modals.start.title}}</h2>
+      <p class="card-subtitle lead">{{levelData.modals.start.subtitle}}</p>
+      <p class="card-text">{{levelData.modals.start.text}}</p>
+      <p ng-repeat="txt in levelData.modals.start.texts" class="card-text">{{txt}}</p>
+    </div>
+    <div ng-repeat="hint in levelData.modals.hints| limitTo:hintsCount" class="card">
+      <h2 class="card-title">{{hint.title}}</h2>
+      <p class="card-subtitle lead">{{hint.subtitle}}</p>
+      <p class="card-text">{{hint.text}}</p>
+      <p ng-repeat="txt in hint.texts" class="card-text">{{txt}}</p>
+    </div>
+  </div>
+</f>

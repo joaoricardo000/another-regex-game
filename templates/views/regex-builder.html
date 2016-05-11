@@ -1,0 +1,73 @@
+
+<div ng-controller="RegexBuilderController" class="regex-builder-container">
+  <div ng-show="startingTools &amp;&amp; !iKnowRegexMode" class="tools-regex-input col-xs-12">
+    <div class="row answer-box">
+      <div class="regex-elements-view">
+        <div class="regex-elements-container">
+          <div ng-repeat="regexElement in regexElements" class="regex-element regex-element-{{regexElement.type}}">{{regexElement.value}}<span class="regex-element-quantifier">{{regexElement.quantifier}}</span></div>
+        </div>
+      </div>
+      <button ng-click="resetTools(true)" class="btn-reset btn fa fa-trash-o"></button>
+    </div>
+    <div class="row tools-box">
+      <div ng-repeat="(toolType, quantity) in availableTools" class="tool tool-{{toolType}}"><span ng-show="quantity&gt;=0">{{quantity}}x</span>
+        <button ng-click="useTool(toolType)" ng-disabled="quantity == 0" class="btn btn-info">{{toolsLabel[toolType]}}</button>
+      </div>
+    </div>
+  </div>
+  <div ng-show="iKnowRegexMode || startingTools==false" class="raw-regex-input">
+    <div class="quick-tools-view">
+      <div onclick="$('.raw-regex-input input').focus()" class="btn-group quick-tools">
+        <button type="button" ng-click="addQuickTool(tool)" ng-repeat="tool in quickTools" class="btn btn-sm btn-info">{{tool}}</button>
+      </div>
+    </div>
+    <input type="text" placeholder="//" ng-model="rawRegex" ng-change="onRawRegexUpdate()" class="input-lg form-control"/>
+  </div>
+  <!-- modals-->
+  <div id="input-letter-modal" class="modal input-modal">
+    <h1 class="letter-display">{{inputValue || 'a-z'}} {{inputQuantifier}}</h1>
+    <form ng-submit="selectToolLetter()" target="">
+      <div data-toggle="buttons" class="btn-group group-quantifier">
+        <label ng-click="inputQuantifier = ''" class="btn btn-warning btn-quantifier">
+          <input type="radio"/>1
+        </label>
+        <label ng-click="inputQuantifier = '?'" class="btn btn-warning btn-quantifier">
+          <input type="radio"/>?
+        </label>
+        <label ng-click="inputQuantifier = '+'" class="btn btn-warning btn-quantifier qtf-plus">
+          <input type="radio"/>+
+        </label>
+        <label ng-click="inputQuantifier = '*'" class="btn btn-warning btn-quantifier qtf-star">
+          <input type="radio"/>*
+        </label>
+      </div><br/>
+      <div class="input-group">
+        <input id="input-letter" type="text" placeholder="abc" autocomplete="off" ng-model="inputValue" ng-change="inputFilters['letter']()" class="form-control"/><span class="input-group-btn">
+          <input type="submit" value="Ok" class="btn btn-success"/></span>
+      </div>
+    </form>
+  </div>
+  <div id="input-group-modal" class="modal input-modal">
+    <h1 class="letter-display">[{{isGroupNegated?'^':''}}{{inputValue || 'a-z'}}] {{inputQuantifier}}</h1>
+    <form ng-submit="selectToolGroup()" target="">
+      <div data-toggle="buttons" class="btn-group group-quantifier">
+        <label ng-click="inputQuantifier = ''" class="btn btn-warning btn-quantifier">
+          <input type="radio"/>1
+        </label>
+        <label ng-click="inputQuantifier = '?'" class="btn btn-warning btn-quantifier">
+          <input type="radio"/>?
+        </label>
+        <label ng-click="inputQuantifier = '+'" class="btn btn-warning btn-quantifier qtf-plus">
+          <input type="radio"/>+
+        </label>
+        <label ng-click="inputQuantifier = '*'" class="btn btn-warning btn-quantifier qtf-star">
+          <input type="radio"/>*
+        </label>
+      </div><br/>
+      <div class="input-group">
+        <input id="input-group" type="text" placeholder="abc" autocomplete="off" ng-model="inputValue" ng-change="inputFilters['group']()" class="form-control"/><span class="input-group-btn">
+          <input type="submit" value="Ok" class="btn btn-success"/></span>
+      </div>
+    </form>
+  </div>
+</div>
