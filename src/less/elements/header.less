@@ -1,0 +1,53 @@
+.nav-bar-i {
+  float: right !important;
+  margin: 0;
+  li {
+    height: 50px;
+  }
+}
+
+.nav-bar-links {
+  li {
+    text-align: center;
+    width: 75px;
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+  .nav-bar-links {
+    li {
+      border-left: 1px solid white;
+      max-width: 25%;
+    }
+    li:last-of-type {
+      border-left: 0;
+    }
+  }
+}
+
+.li-golfsize {
+  line-height: 50px;
+  font-weight: bold;
+  label {
+    border-radius: 20px !important;
+    &.active {
+      border: 1px solid #272B30;
+    }
+  }
+}
+
+.li-iknowregex, .li-golfsize {
+  display: none !important;
+}
+
+.game-level {
+  .li-iknowregex {
+    display: inherit !important;
+  }
+}
+
+.game-golf {
+  .li-golfsize {
+    display: inherit !important;
+  }
+}

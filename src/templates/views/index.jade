@@ -1,0 +1,14 @@
+.container
+    #index-container.index.ng-cloak.text-center.col-md-6.col-md-offset-3
+        h1 Another Regex Game
+        a(href="#/play/1")
+            button#btn-start.btn.btn-success.btn-lg Start
+
+        ul.level-list.list-group
+            a(href="#/play/{{$index}}", ng-repeat="level in allLevels", ng-show="$index>0")
+                li.level-link.list-group-item
+                    | {{$index}} - {{level.labels.title}}
+
+        //a.twitter-timeline(href="https://twitter.com/hashtag/regexgame", data-widget-id="728218971363749888", data-chrome="nofooter")
+        a.github-fork-ribbon.left-bottom.fixed(href="http://github.com/joaoricardo000/another-regex-game", target="_blank",title="Fork me on GitHub") Fork me on GitHub
+

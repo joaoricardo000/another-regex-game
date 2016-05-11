@@ -1,0 +1,163 @@
+.quick-tools-view {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-align: center;
+  @media (min-width: @screen-sm-max) {
+    display: none;
+  }
+}
+
+.quick-tools {
+  font-weight: bold;
+  font-family: @font-family-monospace;
+  display: -webkit-inline-flex;
+  button {
+    color: rgb(39, 43, 48);
+  }
+}
+
+.raw-regex-input {
+  font-family: @font-family-monospace;
+}
+
+.regex-builder-container {
+  margin-bottom: 20px;
+  float: left;
+  width: 100%;
+
+  .tool {
+    padding: 5px;
+    display: inline-block;
+    font-weight: bold;
+    font-family: @font-family-monospace;
+
+    @media (max-width: @screen-xs-max) {
+      width: 25%;
+    }
+
+    button {
+      width: 35px;
+      height: 35px;
+      padding: 0;
+      font-weight: bold;
+      margin-left: 3px;
+      &[disabled] {
+        opacity: 0.5;
+      }
+    }
+
+    &.tool-letter button, &.tool-dot button {
+      border-radius: 200px;
+    }
+
+    &.tool-anchorStart button {
+      border-radius: 10px;
+      border: 2px dashed green;
+    }
+
+    &.tool-anchorEnd button {
+      border-radius: 10px;
+      border: 2px dashed red;
+    }
+
+    &.tool-or button {
+      border-radius: 10px;
+      border: 2px dashed #4a0263;
+    }
+
+    &.tool-dot button {
+      border-radius: 200px;
+    }
+  }
+
+  .regex-element {
+    font-size: large;
+    padding: 2px;
+    margin-left: 2px;
+    min-width: 32px;
+    height: 32px;
+    text-align: center;
+    position: relative;
+    float: left;
+    font-family: @font-family-monospace;
+
+    &.regex-element-letter {
+      border: 2px solid #5bc0de;
+    }
+
+    &.regex-element-group {
+      border: 2px solid #5bc0de;
+    }
+    &.regex-element-groupNegated {
+      border: 2px solid #5bc0de;
+    }
+
+    &.regex-element-dot {
+      border: 2px solid #5bc0de;
+    }
+
+    &.regex-element-anchorStart {
+      border: 2px dashed green;
+    }
+
+    &.regex-element-anchorEnd {
+      border: 2px dashed red;
+    }
+
+    &.regex-element-or {
+      border: 2px dashed #4a0263;
+    }
+
+    &.regex-tool-group {
+      transform: scale(2, 2.5);
+    }
+  }
+
+  .btn-reset {
+    float: right;
+    height: 36px;
+    color: #000;
+    max-width: 15%;
+  }
+
+  .regex-elements-view {
+    max-width: 85%;
+    height: 40px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    float: left;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+  }
+  .regex-elements-container {
+    display: -webkit-inline-flex;
+  }
+}
+
+.input-modal {
+  text-align: center;
+
+  #input-letter, #input-group {
+    width: 95px;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .letter-display {
+    color: white;
+    font-size: 80px;
+  }
+
+  .btn-submit-input {
+    display: inline-block;
+  }
+
+  .input-group {
+    width: 140px;
+    display: inline-block;
+  }
+}

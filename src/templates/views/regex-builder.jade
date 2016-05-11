@@ -1,0 +1,37 @@
+.regex-builder-container(ng-controller="RegexBuilderController")
+    .tools-regex-input.col-xs-12(ng-show="startingTools && !iKnowRegexMode")
+        .row.answer-box
+            .regex-elements-view
+                .regex-elements-container
+                    .regex-element(ng-repeat="regexElement in regexElements", class="regex-element-{{regexElement.type}}")
+                        | {{regexElement.value}}
+                        span.regex-element-quantifier {{regexElement.quantifier}}
+            button.btn-reset.btn.fa.fa-trash-o(ng-click="resetTools(true)")
+        .row.tools-box
+            .tool(ng-repeat="(toolType, quantity) in availableTools", class="tool-{{toolType}}")
+                span(ng-show="quantity>=0") {{quantity}}x
+                button.btn.btn-info(ng-click="useTool(toolType)", ng-disabled="quantity == 0") {{toolsLabel[toolType]}}
+    .raw-regex-input(ng-show="iKnowRegexMode || startingTools==false")
+        .quick-tools-view
+            .btn-group.quick-tools(onclick="$('.raw-regex-input input').focus()")
+                button.btn.btn-sm.btn-info(type="button", ng-click="addQuickTool(tool)", ng-repeat="tool in quickTools") {{tool}}
+        input.input-lg.form-control(type="text",placeholder="//",ng-model="rawRegex",ng-change='onRawRegexUpdate()')
+
+    // modals
+    #input-letter-modal.modal.input-modal
+        h1.letter-display {{inputValue || 'a-z'}} {{inputQuantifier}}
+        form(ng-submit="selectToolLetter()", target="")
+            include ../partials/input-quantifier
+            .input-group
+                input#input-letter.form-control(type="text", placeholder="abc", autocomplete="off", ng-model="inputValue", ng-change="inputFilters['letter']()")
+                span.input-group-btn
+                    input.btn.btn-success(type="submit", value="Ok")
+
+    #input-group-modal.modal.input-modal
+        h1.letter-display [{{isGroupNegated?'^':''}}{{inputValue || 'a-z'}}] {{inputQuantifier}}
+        form(ng-submit="selectToolGroup()", target="")
+            include ../partials/input-quantifier
+            .input-group
+                input#input-group.form-control(type="text", placeholder="abc", autocomplete="off", ng-model="inputValue", ng-change="inputFilters['group']()")
+                span.input-group-btn
+                    input.btn.btn-success(type="submit", value="Ok")

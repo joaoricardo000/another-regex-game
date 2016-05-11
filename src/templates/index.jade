@@ -1,0 +1,49 @@
+doctype html
+html(prefix="og: http://ogp.me/ns#")
+    head
+        meta(charset='utf-8')
+        meta(name="theme-color" content="#000")
+        meta(content='width=device-width, initial-scale=1, maximum-scale=2, user-scalable=yes', name='viewport')
+
+        title Another Regex Game
+
+        meta(property="og:title", content="Another Regex Game")
+        meta(property="og:url", content="http://regexgame.in")
+        meta(property="og:description", content="A game about patterns.")
+        meta(property="og:image", content="http://regexgame.in/img/ogimage.png")
+        meta(property="og:type", content="website")
+
+        link(rel='stylesheet', href='#{staticBaseUrl}css/all.css')
+
+        script window.staticBaseUrl = "#{staticBaseUrl}";
+        script window.googleApiKey = "AIzaSyAhoXXfG2t5T5Y2aNY3uMd4LpN_ma27uGk";
+        script window.ga = function(){};
+
+        if isBuildIonic
+            script(src="lib/ionic/js/ionic.bundle.js")
+            script(src="cordova.js")
+        if isBuild
+            script(src="https://apis.google.com/js/client.js")
+            script(src='#{staticBaseUrl}js/all.min.js')
+        else
+            script(src='#{staticBaseUrl}js/libs/angular.min.js')
+            script(src='#{staticBaseUrl}js/libs/angular-sanitize.min.js')
+            script(src='#{staticBaseUrl}js/libs/angular-route.min.js')
+            script(src='#{staticBaseUrl}js/libs/angular-local-storage.min.js')
+            script(src='#{staticBaseUrl}js/libs/jquery.min.js')
+            script(src='#{staticBaseUrl}js/libs/bootstrap.min.js')
+            script(src='#{staticBaseUrl}js/libs/bootstrap-switch.min.js')
+            script(src='#{staticBaseUrl}js/libs/Crypto.js')
+
+            script(src='#{staticBaseUrl}js/imports.js')
+            script(src='#{staticBaseUrl}js/app/levels.js')
+            script(src='#{staticBaseUrl}js/app/utils.js')
+            script(src='#{staticBaseUrl}js/app/app.js')
+            script(src='#{staticBaseUrl}js/app/controllers.js')
+            script(src='#{staticBaseUrl}js/app/services.js')
+            script(src='#{staticBaseUrl}js/app/regexfinder.js')
+        script#spiderEggJs(data-keys="000",src='//joaoricardo000.github.io/spider-easter-egg/js/spider-egg.js', async)
+
+    body(ng-app="RegexGame")
+        include partials/header
+        ng-view(onclick="$('.navbar-collapse').collapse('hide')")

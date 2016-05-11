@@ -1,0 +1,30 @@
+{
+  "name": "another-regex-game",
+  "authors": [
+    "João Ricardo <joaoricardo000@gmail.com>"
+  ],
+  "description": "",
+  "homepage": "github.com/joaoricardo000/another-regex-game",
+  "moduleType": [
+    "globals"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "directory": "./",
+  "dependencies": {
+    "jquery": "*",
+    "angular": "~1.5.0",
+    "angular-route": "^1.5.5",
+    "angular-sanitize": "*",
+    "angular-local-storage": "^0.2.7",
+    "bootstrap": "^3.3.6",
+    "bootstrap-switch": "^3.3.2",
+    "font-awesome": "~4.5.0",
+    "cryptojs": "*"
+  }
+}

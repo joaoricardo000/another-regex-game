@@ -1,0 +1,51 @@
+.container.index.ng-cloak
+    .col-md-6.col-md-offset-3#game-container(ng-show="levelData")
+        .col-xs-12.title
+            i.fa.fa-lightbulb-o.icon-button.hint-button(ng-click="showHint()", ng-show="gameMode == 'level'")
+
+            i.fa.fa-bolt.icon-button.solve-button(ng-click="solveLevel()", ng-show="gameMode == 'golf' || gameMode == 'created'")
+            i.fa.fa-pencil.icon-button.edit-button(ng-click="editLevel()", ng-show="gameMode == 'created'")
+
+            i.fa.fa-forward.icon-button.random-button(ng-click="getRandomLevel()", ng-show="gameMode == 'golf'")
+            h1 {{ levelData.labels.title }}
+            h3.title.percentage {{gameMode == 'level'?gameStatus.percentage+'%':golfPoints+' points'}}
+
+        .row
+            .words-list(ng-class="{'col-xs-6':gameStatus.badWords.length, 'col-xs-12':gameStatus.badWords.length == 0}")
+                ul.list-group.list-good-words
+                    li.list-group-item(ng-repeat="goodWord in gameStatus.goodWords track by $index", ng-bind-html="goodWord.text", ng-class="{'list-group-item-success':goodWord.match}")
+            .col-xs-6.words-list
+                ul.list-group.list-bad-words(ng-show='gameStatus.badWords.length')
+                    li.list-group-item(ng-repeat="badWord in gameStatus.badWords track by $index", ng-bind-html="badWord.text", ng-class="{'list-group-item-danger':badWord.match}")
+
+        .regex-builder(ng-include="'/static/templates/views/regex-builder.html'", onload='updateRegexBuilder()')
+
+        div.col-xs-12.text-center(ng-show="isLevelCompleted")
+            button.btn.btn-lg.btn-success.btn-next-level(ng-click="nextLevel()") Next Level
+f
+    #start-modal.modal.fade(onclick="$('#start-modal').modal('hide')")
+        .card
+            h2.card-title {{levelData.modals.start.title}}
+            p.card-subtitle.lead {{levelData.modals.start.subtitle}}
+            p.card-text {{levelData.modals.start.text}}
+            p.card-text(ng-repeat="txt in levelData.modals.start.texts") {{txt}}
+
+    #finish-modal.modal.fade(onclick="$('#finish-modal').modal('hide')")
+        .card
+            h2.card-title {{levelData.modals.finish.title}}
+            p.card-subtitle.lead {{levelData.modals.finish.subtitle}}
+            p.card-text {{levelData.modals.finish.text}}
+            div.text-center
+                button.btn.btn-lg.btn-success.btn-next-level(ng-click="nextLevel()") Next Level
+
+    #hints-modal.modal.fade(onclick="$('#hints-modal').modal('hide')")
+        .card
+            h2.card-title {{levelData.modals.start.title}}
+            p.card-subtitle.lead {{levelData.modals.start.subtitle}}
+            p.card-text {{levelData.modals.start.text}}
+            p.card-text(ng-repeat="txt in levelData.modals.start.texts") {{txt}}
+        .card(ng-repeat="hint in levelData.modals.hints| limitTo:hintsCount")
+            h2.card-title {{hint.title}}
+            p.card-subtitle.lead {{hint.subtitle}}
+            p.card-text {{hint.text}}
+            p.card-text(ng-repeat="txt in hint.texts") {{txt}}

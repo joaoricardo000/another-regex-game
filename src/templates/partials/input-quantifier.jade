@@ -1,0 +1,14 @@
+.btn-group.group-quantifier(data-toggle="buttons")
+    label.btn.btn-warning.btn-quantifier(ng-click="inputQuantifier = ''")
+        input(type="radio")
+        | 1
+    label.btn.btn-warning.btn-quantifier(ng-click="inputQuantifier = '?'")
+        input(type="radio")
+        | ?
+    label.btn.btn-warning.btn-quantifier.qtf-plus(ng-click="inputQuantifier = '+'")
+        input(type="radio")
+        | +
+    label.btn.btn-warning.btn-quantifier.qtf-star(ng-click="inputQuantifier = '*'")
+        input(type="radio")
+        | *
+br

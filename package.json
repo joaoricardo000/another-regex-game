@@ -1,0 +1,33 @@
+{
+  "name": "another-regex-game",
+  "version": "1.0.0",
+  "description": "Another Regex Game",
+  "author": "João Ricardo <joaoricardo000@gmail.com>",
+  "scripts": {
+    "postinstall": "bower install"
+  },
+  "dependencies": {
+    "csso": "^2.0.0",
+    "gulp": "*",
+    "gulp-angular-templatecache": "^1.8.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-csso": "^2.0.0",
+    "gulp-exec": "^2.1.2",
+    "gulp-gzip": "^1.2.0",
+    "gulp-jade": "*",
+    "gulp-less": "^3.0.5",
+    "gulp-nodemon": "*",
+    "gulp-plumber": "*",
+    "gulp-uglify": "^1.5.3",
+    "jade": "*",
+    "yargs": "^4.6.0"
+  },
+  "devDependencies": {
+    "browser-sync": "*",
+    "express": "*",
+    "gulp-shell": "^0.5.2",
+    "jquery": "^2.2.3",
+    "jsdom": "^9.0.0",
+    "serve-favicon": "^2.3.0"
+  }
+}

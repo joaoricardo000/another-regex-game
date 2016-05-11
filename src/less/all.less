@@ -1,0 +1,48 @@
+@import "../../bower_components/bootstrap/less/bootstrap";
+@import "../../bower_components/bootstrap-switch/src/less/bootstrap3/bootstrap-switch";
+@import "../../bower_components/bootstrap/less/theme";
+@import "../../bower_components/font-awesome/less/font-awesome";
+@import "variables";
+@import "elements/header";
+@import "elements/create";
+@import "elements/end";
+@import "elements/search";
+@import "elements/fork-me";
+@import "elements/index";
+@import "elements/about";
+@import "elements/game";
+@import "elements/level-customization";
+@import "elements/modal-card";
+@import "elements/regex-builder";
+
+body {
+  padding-top: 50px;
+  overflow-y: scroll;
+  padding-bottom: 20px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.69);
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.bootstrap-switch-id-i-know-regex-mode {
+  margin-left: 5px;
+}
+
+.modal-open {
+  overflow-y: scroll;
+}

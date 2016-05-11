@@ -1,0 +1,30 @@
+.container.index.ng-cloak
+    #create-container.col-md-6.col-md-offset-3
+        .title.col-xs-12
+            h1.col-xs-12 Create
+
+        input.col-xs-12.input-title.input-lg(type="text", placeholder='..title', ng-model='levelData.title')
+        .row
+            .words-list.col-xs-6
+                ul.list-good-words.list-group
+                    li.list-group-item(ng-repeat="word in levelData.goodWords track by $index", ng-class="{'list-group-item-success':levelStatus.goodWords[$index].match}")
+                        input.input-word(type="text", ng-model="levelData.goodWords[$index]", ng-change="testWords()")
+            .words-list.col-xs-6
+                ul.list-bad-words.list-group
+                    li.list-group-item(ng-repeat="word in levelData.badWords track by $index", ng-class="{'list-group-item-danger':levelStatus.badWords[$index].match}")
+                        input.input-word(type="text", ng-model="levelData.badWords[$index]", ng-change="testWords()", maxlength="30")
+
+
+        .regex-builder(ng-include="'/static/templates/views/regex-builder.html'", onload='updateRegexBuilder()')
+
+        .col-xs-12(ng-show="isSolved")
+            .input-group.created-group
+                span.input-group-btn
+                    button#btn-save.btn.btn-success(ng-click="save()") Save
+                input#created-url.form-control(readonly, type="text", ng-click='copyToClipboard()')
+            .alert-copy.alert.alert-dismissible.alert-info.fade.in.out.text-center(role="alert", style="display:none")
+                strong Copied! &nbsp;&nbsp;
+                span Go to level&nbsp;
+                    a.alert-link(ng-href="{{ createdUrl }}") clicking here
+                button.close(type="button", onclick="$('.alert-copy').hide()", aria-label="Close")
+                    span(aria-hidden="true") &times;

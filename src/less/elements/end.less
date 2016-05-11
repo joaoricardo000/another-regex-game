@@ -1,0 +1,57 @@
+.end-trophy {
+  font-size: 200px;
+  width: 100%;
+  text-align: center;
+  text-shadow: 2px 2px 8px #62c462;
+
+  @-ms-keyframes wiggle {
+    0% {
+      -ms-transform: rotate(3deg);
+    }
+    50% {
+      -ms-transform: rotate(-3deg);
+    }
+    100% {
+      -ms-transform: rotate(3deg);
+    }
+  }
+  @-moz-keyframes wiggle {
+    0% {
+      -moz-transform: rotate(3deg);
+    }
+    50% {
+      -moz-transform: rotate(-3deg);
+    }
+    100% {
+      -moz-transform: rotate(3deg);
+    }
+  }
+  @-webkit-keyframes wiggle {
+    0% {
+      -webkit-transform: rotate(3deg);
+    }
+    50% {
+      -webkit-transform: rotate(-3deg);
+    }
+    100% {
+      -webkit-transform: rotate(3deg);
+    }
+  }
+  @keyframes wiggle {
+    0% {
+      transform: rotate(3deg);
+    }
+    50% {
+      transform: rotate(-3deg);
+    }
+    100% {
+      transform: rotate(3deg);
+    }
+  }
+  &:active {
+    -ms-animation: wiggle .3s 2;
+    -moz-animation: wiggle .3s 2;
+    -webkit-animation: wiggle .3s 2;
+    animation: wiggle .3s 2;
+  }
+}

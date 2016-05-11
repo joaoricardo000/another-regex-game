@@ -1,0 +1,13 @@
+.container.search.ng-cloak
+    #search-container.col-md-6.col-md-offset-3
+        .title.col-xs-12
+            h1 Search
+            .load-icon
+                i.fa.fa-spin.fa-refresh(ng-show="wordsList==null")
+
+        .regex-builder.row(ng-include="'/static/templates/views/regex-builder.html'", onload='updateRegexBuilder()')
+
+        .words-list.col-xs-12(ng-show="matches.length")
+            h3 {{ totalMatches }}
+            ul.list-group.list-good-words
+                li.list-group-item(ng-repeat="match in matches", ng-bind-html="match.text")
