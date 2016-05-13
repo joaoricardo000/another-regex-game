@@ -163,7 +163,7 @@ window.levelsData = [
         id: "4"
     },
     {
-        goodWords: ["sabado", "sentir", "espaguete", "bobos", "salgueiro", "biscoito"],
+        goodWords: ["sabado", "sentir", "bolacha", "estupido", "salgueiro", "biscoito"],
         badWords: ["enfurnar", "grampo", "vivencial", "gotejar", "tony", "lalau"],
         startingTools: {
             group: 1
